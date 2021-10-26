@@ -7,9 +7,37 @@
  * 4. Count of words.
  * @param {object} event - Event class
  */
+
 function onStatisticsClicked(event) {
     //TODO: Implement this function
     console.log('onStatisticsClicked called');
+
+    //count of char-s
+    document.getElementById("valCharCount").value = txt.length;
+    
+    //count of spaces
+    document.getElementById("valCountSpaces").value = txt.split(" ").length - 1;
+    
+    //count of vowels
+    var v_counter = 0;
+    var c_counter = 0;
+
+    let vowels_arr = ['a','e','i','o','u'];
+
+    for (i=0; i<txt.length; i++) {
+        if (txt[i] in vowels_arr) {
+            v_counter++;
+        }
+        else {
+            c_counter++;
+        }
+    }
+
+    document.getElementById("valVowelsCount").value = v_counter;
+    document.getElementById("valConsonantsCount").value = c_counter;
+
+    //count of words
+    document.getElementById("valWordsCount").value = txt.split(" ").length;
 }
 
 /**
@@ -20,6 +48,19 @@ function onStatisticsClicked(event) {
 function onRemoveWordsClicked(event) {
     //TODO: Implement this function
     console.log('onRemoveWordsClicked called');
+
+
+    let words = txt.split(" ");
+    let res_arr = []; 
+    let counter = 1;
+    
+    for (i=0; i<words.length; i++) {
+        if (counter % 2 == 0) {
+            res_arr.push(words[i])
+        }
+    }
+    document.getElementById("valOddWords").value = res_arr;
+
 }
 
 
